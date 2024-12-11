@@ -25,7 +25,7 @@ def get_connection():
 
 @auth.post('/register')
 async def register(data: authSchema.UserCreate, db: Session = Depends(get_db)):
-  # Verifica se connection é valido
+# Verifica se connection é valido
   if (not enumeration.UserConnection.has_value(data.connection)):
     raise HTTPException(status_code=400, detail=errorMessages.INVALID_CONNECTION)
 
