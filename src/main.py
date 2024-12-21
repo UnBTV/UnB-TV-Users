@@ -14,21 +14,14 @@ userModel.Base.metadata.create_all(bind=database.engine)
 
 app = FastAPI()
 
-class CustomCORSMiddleware(BaseHTTPMiddleware):
-    async def dispatch(self, request, call_next):
-        response = await call_next(request)
-        response.headers['Access-Control-Allow-Origin'] = 'http://localhost:4200'
-        response.headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS, PUT, DELETE'
-        response.headers['Access-Control-Allow-Headers'] = 'Content-Type, Authorization'
-        return response
-
-app.add_middleware(CustomCORSMiddleware)  
-  
-origins = ["*"]
+origins = [
+    "https://unbtv.netlify.app",  
+    "http://localhost:4200",
+]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
