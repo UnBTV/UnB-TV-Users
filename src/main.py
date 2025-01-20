@@ -19,12 +19,16 @@ class CustomCORSMiddleware(BaseHTTPMiddleware):
         response.headers['Access-Control-Allow-Headers'] = 'Content-Type, Authorization'
         return response
 
-app.add_middleware(CustomCORSMiddleware)
-
+app.add_middleware(CustomCORSMiddleware)  
+  
+origins = [
+    "https://unbtv.netlify.app",  
+    "http://localhost:4200",
+]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
