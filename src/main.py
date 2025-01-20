@@ -21,13 +21,10 @@ class CustomCORSMiddleware(BaseHTTPMiddleware):
 
 app.add_middleware(CustomCORSMiddleware)
 
-origins = [
-    "https://unbtv.com.br"    # Para produção
-]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
