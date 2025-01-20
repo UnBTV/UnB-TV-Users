@@ -22,7 +22,7 @@ class CustomCORSMiddleware(BaseHTTPMiddleware):
 app.add_middleware(CustomCORSMiddleware)  
   
 origins = [
-    "https://unbtv.netlify.app",  
+    "https://unbtv.com.br",  
     "http://localhost:4200",
 ]
 
